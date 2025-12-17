@@ -33,7 +33,7 @@ namespace SAS.StateMachineGraph.Editor
             switch (e.type)
             {
                 case EventType.MouseDrag:
-                    if (e.button == 0 && altKeyHeld)
+                    if ((e.button == 0 && altKeyHeld) || e.button == 2)
                         OnDrag(e.delta);
                     break;
                 case EventType.KeyDown:
@@ -45,7 +45,7 @@ namespace SAS.StateMachineGraph.Editor
                         altKeyHeld = false;
                     break;
                 case EventType.ScrollWheel:
-                    Zoom += 0.025f * Mathf.Sign(e.delta.y);
+                    Zoom -= 0.025f * Mathf.Sign(e.delta.y);
                     break;
             }
         }
